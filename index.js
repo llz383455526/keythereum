@@ -410,6 +410,7 @@ module.exports = {
     function verifyAndDecrypt(derivedKey, salt, iv, ciphertext, algo) {
       var key;
       if (self.getMAC(derivedKey, ciphertext) !== keyObjectCrypto.mac) {
+        cb && cb("-1");
         throw new Error("message authentication code mismatch");
       }
       if (keyObject.version === "1") {
